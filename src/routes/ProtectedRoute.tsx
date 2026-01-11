@@ -1,6 +1,7 @@
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 
+
 export default function ProtectedRoute({
   children,
 }: {
@@ -13,7 +14,8 @@ export default function ProtectedRoute({
   }
 
   if (!isAuthenticated) {
-    window.location.href = "http://localhost:5173/login";
+    window.location.href =import.meta.env.VITE_FRONTEND_URL;
+    console.log(import.meta.env.VITE_FRONTEND_URL)
     return null;
   }
   if (user?.role?.toLowerCase() !== "admin") {
